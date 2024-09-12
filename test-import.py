@@ -25,3 +25,4 @@ ml_client=MLClient.from_config(AzureCliCredential())
 ws=ml_client.workspaces.get(workspace_name)
 
 cpt_asset=ml_client.data.get(name="ChicagoParkingTicketsFolder4", version="initial")
+
