@@ -19,7 +19,7 @@ from azure.ai.ml.constants import AssetTypes
 # update the 'my_path' variable to match the location of where you downloaded the data on your
 # local filesystem
 
-my_path = "./data/ChicagoParkingTickets.csv"
+my_path = "./data"
 # set the version number of the data asset
 v1 = "initial"
 
