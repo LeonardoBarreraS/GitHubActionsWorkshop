@@ -32,10 +32,10 @@ from azure.ai.ml.sweep import (
 )
 
 # NOTE:  set your workspace name here!
-workspace_name="CSAzureML"
+workspace_name="Leogithubactions"
 # NOTE:  if you do not have a cpu-cluster already, we will create one
 # Alternatively, change the name to a CPU-based compute cluster
-cluster_name="cpu-cluster"
+cluster_name="ComputeLeo86"
 
 # NOTE:  for local runs, I'm using the Azure CLI credential
 # For production runs as part of an MLOps configuration using
@@ -103,17 +103,17 @@ try:
     print(f"You already have a deployment named {deployment_name}; we'll reuse it as is.")
 except Exception:
     print("No deployment exists--creating a new deployment")
-    environment=ml_client.environments.get(name="AzureML-sklearn-1.0-ubuntu20.04-py38-cpu", version="33")
+    environment=ml_client.environments.get(name="AzureML-responsibleai-0.20-ubuntu20.04-py38-cpu", version="9")
     deployment=ModelBatchDeployment(
         name="cpt-batch-deployment",
         description="Batch scoring of Chicago Parking Ticket payment status",
         endpoint_name=endpoint.name,
         model=model,
         environment=environment,
-        code_configuration=CodeConfiguration(code="scripts", scoring_script="score_model.py"),
+        code_configuration=CodeConfiguration(code="./Pipeline/scripts", scoring_script="score_model.py"),
         compute=cluster_name,
         settings=ModelBatchDeploymentSettings(
-            instance_count=2,
+            instance_count=1,
             max_concurrency_per_instance=2,
             mini_batch_size=10,
             output_action=BatchDeploymentOutputAction.APPEND_ROW,
@@ -130,7 +130,7 @@ except Exception:
     print("Made deployment the default for this endpoint.")
 
 # Prepare the dataset
-data_path="data"
+data_path="./Pipeline/data"
 dataset_name="ChicagoParkingTicketsUnlabeled"
 try:
     chicago_dataset_unlabeled=ml_client.data.get(dataset_name, label="latest")

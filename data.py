@@ -1,4 +1,26 @@
 from azure.ai.ml import MLClient
+from azure.ai.ml.constants import BatchDeploymentOutputAction
+from azure.identity import DefaultAzureCredential
+
+# Inicializar el cliente de ML
+credential = DefaultAzureCredential()
+ml_client = MLClient.from_config(credential)
+
+# Nombre del endpoint y deployment que deseas eliminar
+endpoint_name = "chicago-parking-tickets-batch"
+deployment_name = "cpt-batch-deployment"
+
+# Obtener el endpoint
+endpoint = ml_client.batch_endpoints.get(endpoint_name)
+
+# Eliminar el deployment existente
+ml_client.batch_deployments.begin_delete(
+    name=deployment_name,
+    endpoint_name=endpoint_name
+).result()
+
+
+"""from azure.ai.ml import MLClient
 from azure.identity import DefaultAzureCredential
 from azure.ai.ml.entities import Data
 from azure.ai.ml.constants import AssetTypes
@@ -13,6 +35,15 @@ ml_client = MLClient(
     resource_group_name="leonardobarrera.s-rg",
     workspace_name="Leogithubactions",
 )
+
+ws=ml_client.workspaces.get("Leogithubactions")
+print(f"workspace:{ws.name}")
+
+endpoint = ml_client.batch_endpoints.get("chicago-parking-tickets-batch")
+print(f"Endpoint '{endpoint.name}' exists.")
+
+
+
 from azure.ai.ml.entities import Data
 from azure.ai.ml.constants import AssetTypes
 
@@ -40,3 +71,9 @@ try:
 except:
     ml_client.data.create_or_update(my_data)
     print(f"Data asset created. Name: {my_data.name}, version: {my_data.version}")
+"""
+
+
+
+
+    
