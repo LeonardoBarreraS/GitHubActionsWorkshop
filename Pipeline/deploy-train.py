@@ -69,7 +69,7 @@ except Exception:
     # Now, we pass the object to MLClient's create_or_update method
     cpu_cluster=ml_client.compute.begin_create_or_update(cpu_cluster)
 
-parent_dir="./Pipeline/config"
+parent_dir="config"
 # Perform data preparation
 # NOTE:  I would actually combine the feature-* and split-data steps together
 # but have left them separate to show an example of multi-step pipelines
