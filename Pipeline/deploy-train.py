@@ -115,7 +115,7 @@ def prepare_pipeline_job(cluster_name):
 #esto es una prueba 2
 #esto es una prueba 3
 #esto es una prueba 5
-#esto es una prueba 6
+#esto es una prueba 
 prepped_job=prepare_pipeline_job(cluster_name)
 ml_client.jobs.create_or_update(prepped_job, experiment_name="Chicago Parking Tickets Code-First")
 print("Now look in the Azure ML Jobs UI to see the status of the pipeline job.  This will be in the 'Chicago Parking Tickets Code-First' experiment.")
