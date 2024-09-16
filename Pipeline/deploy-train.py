@@ -106,7 +106,7 @@ def prepare_pipeline_job(compute_name):
 #esto es una prueba
 #esto es una prueba 2
 #esto es una prueba 3
-#esto es una prueba 5
+#esto es una prueba 
 #esto es una prueba 
 prepped_job=prepare_pipeline_job(compute_name)
 ml_client.jobs.create_or_update(prepped_job, experiment_name="Chicago Parking Tickets Code-First")
