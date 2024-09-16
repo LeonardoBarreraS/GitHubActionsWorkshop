@@ -35,11 +35,11 @@ jobs:
         az extension add -n ml -y
         echo "Installed Azure CLI and ML extension"
     ###############################################################
-    - name: Connect Azure Machine Learning Workspace
-      id: aml_workspace
-      uses: Azure/aml-workspace@v1
+    - name: Azure Login
+      id: azure_login
+      uses: azure/login@v1
       with:
-          azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
     ################################################################
     - name: Install and prepare Python
       uses: actions/setup-python@v4
