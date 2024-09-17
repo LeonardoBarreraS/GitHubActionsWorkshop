@@ -44,7 +44,7 @@ cluster_name="Computeleogithubactions"
 ml_client=MLClient.from_config(AzureCliCredential())
 ws=ml_client.workspaces.get(workspace_name)
 
-# Make sure the compute cluster exists already
+## Make sure the compute cluster exists already
 try:
     cpu_cluster=ml_client.compute.get(cluster_name)
     print(
