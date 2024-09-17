@@ -93,7 +93,7 @@ except Exception:
     print(f"Endpoint name:  {endpoint.name}")
 
 # Retrieve the parking tickets model
-model=ml_client.models.get(name="ChicagoParkingTicketsCodeFirst", version="latest")
+model=ml_client.models.get(name="ChicagoParkingTicketsCodeFirst", version="3")
 print("Retrieved model.")
 
 # Get the correct environment
