@@ -35,7 +35,7 @@ from azure.ai.ml.sweep import (
 workspace_name="Leogithubactions"
 # NOTE:  if you do not have a cpu-cluster already, we will create one
 # Alternatively, change the name to a CPU-based compute cluster
-cluster_name="ComputeLeo86"
+cluster_name="Computeleogithubactions"
 
 # NOTE:  for local runs, I'm using the Azure CLI credential
 # For production runs as part of an MLOps configuration using
@@ -44,7 +44,7 @@ cluster_name="ComputeLeo86"
 ml_client=MLClient.from_config(AzureCliCredential())
 ws=ml_client.workspaces.get(workspace_name)
 
-# Make sure the compute cluster exists already
+#### Make sure the compute cluster exists already
 try:
     cpu_cluster=ml_client.compute.get(cluster_name)
     print(
@@ -93,7 +93,7 @@ except Exception:
     print(f"Endpoint name:  {endpoint.name}")
 
 # Retrieve the parking tickets model
-model=ml_client.models.get(name="ChicagoParkingTicketsCodeFirst", version="1")
+model=ml_client.models.get(name="ChicagoParkingTicketsCodeFirst", version="3")
 print("Retrieved model.")
 
 # Get the correct environment
@@ -110,7 +110,7 @@ except Exception:
         endpoint_name=endpoint.name,
         model=model,
         environment=environment,
-        code_configuration=CodeConfiguration(code="./Pipeline/scripts", scoring_script="score_model.py"),
+        code_configuration=CodeConfiguration(code="scripts", scoring_script="score_model.py"),
         compute=cluster_name,
         settings=ModelBatchDeploymentSettings(
             instance_count=1,
@@ -130,7 +130,7 @@ except Exception:
     print("Made deployment the default for this endpoint.")
 
 # Prepare the dataset
-data_path="./Pipeline/data"
+data_path="data"
 dataset_name="ChicagoParkingTicketsUnlabeled"
 try:
     chicago_dataset_unlabeled=ml_client.data.get(dataset_name, label="latest")
