@@ -93,11 +93,11 @@ except Exception:
     print(f"Endpoint name:  {endpoint.name}")
 
 # Retrieve the parking tickets model
-model=ml_client.models.get(name="ChicagoParkingTicketsCodeFirst", version="3")
+model=ml_client.models.get(name="ChicagoParkingTicketsCodeFirst", version="3") #Se debe cambiar la versión del modelo o el modelo mismo en el entrenamiento obtuve un modelo mejor. 
 print("Retrieved model.")
 
 # Get the correct environment
-deployment_name="cpt-batch-deployment"
+deployment_name="cpt-batch-deployment" #también debo cambiar el nombre del deployment con el objeto de crear uno nuevo. 
 try:
     deployment=ml_client.batch_deployments.get(name=deployment_name, endpoint_name=endpoint_name)
     print(f"You already have a deployment named {deployment_name}; we'll reuse it as is.")
